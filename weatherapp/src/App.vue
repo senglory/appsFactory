@@ -21,7 +21,7 @@
   import VsInput from './components/vs-input.vue';
   import voyagerApi from './components/search-api';
   import IWeatherForecast from './types/WeatherForecast';
-
+  
   @Component({
     components: {
       VsResults,
@@ -40,9 +40,14 @@
 
       if (!qq.ok)
       {
-        this.weatherResultsErrorMy = qq;
+        let errTxt: string = '';
+
+        if (qq.status === 400)
+        {
+          errTxt += qq.message;
+        }
+        this.weatherResultsErrorMy = errTxt;
         this.weatherResultsMy = {};
-        //throw new Error(qq.message);
       }
       else
       {

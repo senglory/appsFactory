@@ -10,6 +10,7 @@ search: (cityOrPlz: string): Promise<any> => {
         const path = 'api/WeatherData/WeatherForecasts';
         const api = `${host}${path}?cityOrZip=${cityOrPlz}`;
         const callWS = fetch(api);
+
         return callWS;
 },
 };

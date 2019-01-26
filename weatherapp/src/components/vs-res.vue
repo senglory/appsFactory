@@ -31,7 +31,7 @@
         </b-list-group>
     </div>
     <div v-else-if="weatherResultsError !== ''">
-        <p>An error has occured</p>
+        <p>An error has occured - {{ weatherResultsError }}</p>
     </div>
 </template>
 
@@ -45,8 +45,8 @@
   @Component
   export default class VsResults extends Vue {
 
-  @Prop() private weatherResults!: IWeatherForecast;
-  @Prop() private weatherResultsError!: any;
+    @Prop() private weatherResults!: IWeatherForecast;
+    @Prop() private weatherResultsError!: string;
 
   }
 
