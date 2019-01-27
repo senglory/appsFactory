@@ -36,22 +36,19 @@
 
   
     public async doSearch(cityOrPlz: string) {
-      const qq = await voyagerApi.search(cityOrPlz);
+      const res = await voyagerApi.search(cityOrPlz);
 
-      if (!qq.ok)
+      if (!res.ok)
       {
         let errTxt: string = '';
 
-        if (qq.status === 400)
-        {
-          errTxt += qq.message;
-        }
+        errTxt += res.statusText;
         this.weatherResultsErrorMy = errTxt;
         this.weatherResultsMy = {};
       }
       else
       {
-        const data = await qq.json();
+        const data = await res.json();
         this.weatherResultsMy = data as IWeatherForecast;
         this.weatherResultsErrorMy = '';
       }
